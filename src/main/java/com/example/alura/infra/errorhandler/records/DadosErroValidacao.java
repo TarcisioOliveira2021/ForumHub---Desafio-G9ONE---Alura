@@ -1,4 +1,4 @@
-package com.example.alura.infra.apiExceptions.records;
+package com.example.alura.infra.errorhandler.records;
 
 import org.springframework.validation.FieldError;
 
