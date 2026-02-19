@@ -33,7 +33,7 @@ public class TopicoController {
     private ITopicoService service;
 
     @PostMapping
-    public ResponseEntity cadastrar(@RequestBody DadosCadastroTopico dados, UriComponentsBuilder uriBuilder){        
+    public ResponseEntity<?> cadastrar(@RequestBody DadosCadastroTopico dados, UriComponentsBuilder uriBuilder){        
         var topicoCriado = service.cadastrar(dados);
         var uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topicoCriado.getId()).toUri();
 
@@ -47,19 +47,19 @@ public class TopicoController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody DadosAtualizacaoTopico dados) {
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody DadosAtualizacaoTopico dados) {
         var topicoAtualizado = service.atualizar(id, dados);
         return ResponseEntity.ok(new DadosTopicoAtualizados(topicoAtualizado));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<?> deletar(@PathVariable Long id) {
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity listarTopico(@PathVariable Long id) {
+    public ResponseEntity<?> listarTopico(@PathVariable Long id) {
         var topicoRetornado = service.detalhar(id);
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topicoRetornado));
     }
