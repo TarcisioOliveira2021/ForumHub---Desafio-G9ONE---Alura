@@ -11,6 +11,7 @@ import com.example.alura.domain.topico.DadosListagemTopico;
 import com.example.alura.domain.topico.DadosTopicoAtualizados;
 import com.example.alura.services.intefaces.ITopicoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("topicos")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired
